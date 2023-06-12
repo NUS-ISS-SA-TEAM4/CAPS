@@ -26,6 +26,7 @@ public class Lecturer{
     private Date lecturerbirthday;
 
     private String lecturerpassword;
-
-    private String lecturerfaculty;
+    @ManyToOne
+    @JoinColumn(name = "lecturerfacultyid")
+    private Faculty faculty;
 }
