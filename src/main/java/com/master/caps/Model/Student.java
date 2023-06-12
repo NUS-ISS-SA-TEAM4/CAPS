@@ -3,7 +3,6 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
 import lombok.Data;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 @Entity
@@ -21,12 +20,6 @@ public class Student{
     private String registeringStatus;
     private Long programId;
     private Long courseId;
-
-
-    public void test()
-    {
-
-    }
 
 
 }
