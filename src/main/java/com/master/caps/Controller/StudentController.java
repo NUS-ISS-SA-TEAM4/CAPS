@@ -20,7 +20,7 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    // 获取所有学生
+    // 获取所有学生git
     @GetMapping("/students")
     public Model getAllStudents(Model model) {
         List<Student> students = studentRepository.findAll();

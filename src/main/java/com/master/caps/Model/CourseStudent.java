@@ -20,4 +20,5 @@ public class CourseStudent {
     private Student student;
 
     private String Grade;
+    private Integer status;
 }
