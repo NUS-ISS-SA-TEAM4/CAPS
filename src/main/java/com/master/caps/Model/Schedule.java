@@ -18,5 +18,4 @@ public class Schedule{
     private Date schedulestarttime;
     @Temporal(TemporalType.DATE)
     private Date scheduleendtime;
-
 }

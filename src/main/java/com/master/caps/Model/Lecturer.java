@@ -7,25 +7,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Lecturer{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true)
-    private String lecturerusername;
-
-    private String lecturerlastname;
-
-    private String lecturerfirstname;
-
-    private String lecturergender;
-
-    @Temporal(TemporalType.DATE)
-    private Date lecturerbirthday;
-
-    private String lecturerpassword;
+public class Lecturer extends Person{
     @ManyToOne
     @JoinColumn(name = "lecturerfacultyid")
     private Faculty faculty;

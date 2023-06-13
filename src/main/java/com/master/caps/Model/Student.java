@@ -8,34 +8,13 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Student{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true)
-    private String studentMatriculationNumber;
-
-    private String studentLastName;
-
-    private String studentFirstMidName;
-
+public class Student extends Person{
     @Temporal(TemporalType.DATE)
-    private Date studentEnrollmentDate;
-
-    private String studentGender;
-
-    @Temporal(TemporalType.DATE)
-    private Date studentDateOfBirth;
+    private Date enrollmentdate;
 
     @ManyToOne
-    @JoinColumn(name = "studentFacultyId")
-    private Faculty studentFaculty;
+    @JoinColumn(name = "studentfacultyid")
+    private Faculty studentfaculty;
 
-    private Float studentGradePointAverage;
-
-    private String studentPassword;
-
-
-
+    private Float gpa;
 }
