@@ -45,7 +45,7 @@ public class LecturerController {
         lecturer.setLecturerusername(updatedLecturer.getLecturerusername());
         lecturer.setLecturerbirthday(updatedLecturer.getLecturerbirthday());
         lecturer.setLecturergender(updatedLecturer.getLecturergender());
-        lecturer.setLecturerfaculty(updatedLecturer.getLecturerfaculty());
+        lecturer.setFaculty(updatedLecturer.getFaculty());
         lecturer.setLecturerfirstname(updatedLecturer.getLecturerfirstname());
         lecturer.setLecturerlastname(updatedLecturer.getLecturerlastname());
         lecturer.setLecturerpassword(updatedLecturer.getLecturerpassword());
