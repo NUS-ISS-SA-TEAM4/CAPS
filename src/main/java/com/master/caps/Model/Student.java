@@ -1,25 +1,41 @@
 package com.master.caps.Model;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Id;
 import lombok.Data;
+
+import java.util.Date;
 
 
 @Entity
 @Data
 public class Student{
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String matricNo;
-    private String gender;
-    private Integer yob;
-    private String grade;
-    private Double gpa;
-    private String registeringStatus;
-    private Long programId;
-    private Long courseId;
+
+    @Column(unique = true)
+    private String studentMatriculationNumber;
+
+    private String studentLastName;
+
+    private String studentFirstMidName;
+
+    @Temporal(TemporalType.DATE)
+    private Date studentEnrollmentDate;
+
+    private String studentGender;
+
+    @Temporal(TemporalType.DATE)
+    private Date studentDateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "studentFacultyId")
+    private Faculty studentFaculty;
+
+    private Float studentGradePointAverage;
+
+    private String studentPassword;
+
 
 
 }
