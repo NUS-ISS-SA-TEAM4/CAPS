@@ -21,6 +21,7 @@ public class StudentController {
     }
 
     // 获取所有学生
+    //get all student 
     @GetMapping("/students")
     public Model getAllStudents(Model model) {
         List<Student> students = studentRepository.findAll();
@@ -29,6 +30,7 @@ public class StudentController {
     }
 
     // 获取单个学生
+    //get all student 
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) throws Exception {
         Student student = studentRepository.findById(id)
@@ -37,6 +39,8 @@ public class StudentController {
     }
 
     // 创建学生
+    //create student
+
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         Student createdStudent = studentRepository.save(student);
@@ -44,6 +48,7 @@ public class StudentController {
     }
 
     // 更新学生
+    //update student
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) throws Exception {
         Student student = studentRepository.findById(id)
@@ -64,6 +69,7 @@ public class StudentController {
     }
 
     // 删除学生
+    //Delete student
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) throws Exception {
         Student student = studentRepository.findById(id)
