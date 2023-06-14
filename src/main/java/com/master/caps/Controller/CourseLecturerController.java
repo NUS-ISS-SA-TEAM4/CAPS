@@ -1,5 +1,6 @@
 package com.master.caps.Controller;
 
+import com.master.caps.Model.Course;
 import com.master.caps.Model.CourseLecturer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,10 +15,10 @@ import java.util.Optional;
 @RequestMapping("/course-lecturers")
 public class CourseLecturerController {
 
-    private final CourseLecturerRepository courseLecturerRepository;
+    private final IRepository<CourseLecturer> courseLecturerRepository;
 
     @Autowired
-    public CourseLecturerController(CourseLecturerRepository courseLecturerRepository) {
+    public CourseLecturerController(IRepository<CourseLecturer> courseLecturerRepository) {
         this.courseLecturerRepository = courseLecturerRepository;
     }
 
@@ -76,5 +77,3 @@ public class CourseLecturerController {
 }
 
 
-interface CourseLecturerRepository extends JpaRepository<CourseLecturer, Long> {
-}

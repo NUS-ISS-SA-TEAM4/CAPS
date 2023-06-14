@@ -14,10 +14,10 @@ import java.util.Optional;
 @RequestMapping("/courses")
 public class CourseController {
 
-    private final CourseRepository courseRepository;
+    private final IRepository<Course> courseRepository;
 
     @Autowired
-    public CourseController(CourseRepository courseRepository) {
+    public CourseController(IRepository<Course> courseRepository) {
         this.courseRepository = courseRepository;
     }
 
@@ -79,6 +79,4 @@ public class CourseController {
     }
 }
 
-interface CourseRepository extends JpaRepository<Course, Long> {
-}
 

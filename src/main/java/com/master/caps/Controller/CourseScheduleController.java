@@ -14,10 +14,10 @@ import java.util.Optional;
 @RequestMapping("/course-schedules")
 public class CourseScheduleController {
 
-    private final CourseScheduleRepository courseScheduleRepository;
+    private final IRepository<CourseSchedule> courseScheduleRepository;
 
     @Autowired
-    public CourseScheduleController(CourseScheduleRepository courseScheduleRepository) {
+    public CourseScheduleController(IRepository<CourseSchedule>courseScheduleRepository) {
         this.courseScheduleRepository = courseScheduleRepository;
     }
 
@@ -74,8 +74,4 @@ public class CourseScheduleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
-
-
-interface CourseScheduleRepository extends JpaRepository<CourseSchedule, Long> {
 }

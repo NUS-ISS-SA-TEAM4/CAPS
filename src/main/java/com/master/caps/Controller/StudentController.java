@@ -1,4 +1,5 @@
 package com.master.caps.Controller;
+import com.master.caps.Model.Lecturer;
 import com.master.caps.Model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,10 +14,10 @@ import java.util.List;
 public class StudentController {
 
 
-    private final StudentRepository studentRepository;
+    private final IRepository<Student> studentRepository;
 
     @Autowired
-    public StudentController(StudentRepository studentRepository) {
+    public StudentController(IRepository<Student> studentRepository) {
         this.studentRepository = studentRepository;
     }
 
@@ -75,8 +76,3 @@ public class StudentController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
-interface StudentRepository extends JpaRepository<Student, Long> {
-}
-
-

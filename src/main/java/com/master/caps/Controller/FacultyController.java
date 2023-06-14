@@ -1,5 +1,6 @@
 package com.master.caps.Controller;
 
+import com.master.caps.Model.CourseStudent;
 import com.master.caps.Model.Faculty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,7 @@ import java.util.List;
 public class FacultyController {
 
     @Autowired
-    private FacultyRepository facultyRepository;
+    private IRepository<Faculty>  facultyRepository;
 
     @GetMapping
     public List<Faculty> getAllFaculties() {
@@ -44,7 +45,4 @@ public class FacultyController {
     public void deleteFaculty(@PathVariable Long id) {
         facultyRepository.deleteById(id);
     }
-}
-
-interface FacultyRepository extends JpaRepository<Faculty, Long> {
 }
