@@ -1,10 +1,7 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Model.CourseStudent;
 import com.master.caps.Model.Lecturer;
-import com.master.caps.Model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -14,9 +11,9 @@ import java.util.List;
 
 @RestController
 public class LecturerController {
-    @Autowired
-    private final IRepository<Lecturer>  lecturerRepository;
 
+    private final IRepository<Lecturer>  lecturerRepository;
+    @Autowired
     public LecturerController(IRepository<Lecturer> lecturerRepository)
     {
         this.lecturerRepository = lecturerRepository;
@@ -56,7 +53,7 @@ public class LecturerController {
     }
     //update the information of lecturer whose id is xxx
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id) throws Exception
+    public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id)
     {
        Lecturer lecturer = lecturerRepository.findById(id).orElseThrow(()-> new RuntimeException("Lecturer not found with id: \" + id"));
        lecturerRepository.delete(lecturer);

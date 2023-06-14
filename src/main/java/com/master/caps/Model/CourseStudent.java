@@ -2,11 +2,10 @@ package com.master.caps.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.yaml.snakeyaml.events.Event;
 
 @Entity
 @Data
-@Table(name = "Course_Student")
+@Table(name = "course_student")
 public class CourseStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
