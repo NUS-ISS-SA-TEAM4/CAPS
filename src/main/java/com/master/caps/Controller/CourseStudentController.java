@@ -31,7 +31,7 @@ public class CourseStudentController {
 
     // 获取单个课程学生关联
     @GetMapping("/{id}")
-    public ResponseEntity<CourseStudent> getCourseStudentById(@PathVariable Long id) {
+    public ResponseEntity<CourseStudent> getCourseStudentById(@PathVariable Integer id) {
         Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
         if (optionalCourseStudent.isPresent()) {
             CourseStudent courseStudent = optionalCourseStudent.get();
@@ -50,7 +50,7 @@ public class CourseStudentController {
 
     // 更新课程学生关联
     @PutMapping("/{id}")
-    public ResponseEntity<CourseStudent> updateCourseStudent(@PathVariable Long id, @RequestBody CourseStudent courseStudent) {
+    public ResponseEntity<CourseStudent> updateCourseStudent(@PathVariable Integer id, @RequestBody CourseStudent courseStudent) {
         Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
         if (optionalCourseStudent.isPresent()) {
             CourseStudent existingCourseStudent = optionalCourseStudent.get();
@@ -66,7 +66,7 @@ public class CourseStudentController {
 
     // 删除课程学生关联
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourseStudent(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCourseStudent(@PathVariable Integer id) {
         Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
         if (optionalCourseStudent.isPresent()) {
             courseStudentRepository.deleteById(id);

@@ -11,7 +11,7 @@ public class Schedule{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private Integer scheduledayofweek;
     @Temporal(TemporalType.DATE)

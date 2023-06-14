@@ -30,7 +30,7 @@ public class CourseController {
 
     // 获取单个课程
     @GetMapping("/Course/{id}")
-    public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
+    public ResponseEntity<Course> getCourseById(@PathVariable Integer id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
@@ -49,7 +49,7 @@ public class CourseController {
 
     // 更新课程
     @PutMapping("/update/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
+    public ResponseEntity<Course> updateCourse(@PathVariable Integer id, @RequestBody Course course) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             Course existingCourse = optionalCourse.get();
@@ -68,7 +68,7 @@ public class CourseController {
 
     // 删除课程
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCourse(@PathVariable Integer id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             courseRepository.delete(optionalCourse.get());

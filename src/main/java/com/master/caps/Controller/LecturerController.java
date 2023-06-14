@@ -32,14 +32,14 @@ public class LecturerController {
     // get the list of all lecturers
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lecturer> getLecturerById(@PathVariable Long id)throws Exception
+    public ResponseEntity<Lecturer> getLecturerById(@PathVariable Integer id)throws Exception
     {
         Lecturer lecturer = lecturerRepository.findById(id).orElseThrow(()->new Exception("Lecturer not found with id:"+id));
         return new ResponseEntity<>(lecturer, HttpStatus.OK);
     }
     //get the lecturer whose id is xxx
     @PutMapping("/{id}")
-    public ResponseEntity<Lecturer> updateLecturer(@PathVariable Long id, @RequestBody Lecturer updatedLecturer) throws Exception {
+    public ResponseEntity<Lecturer> updateLecturer(@PathVariable Integer id, @RequestBody Lecturer updatedLecturer) throws Exception {
         Lecturer lecturer = lecturerRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
 
@@ -56,7 +56,7 @@ public class LecturerController {
     }
     //update the information of lecturer whose id is xxx
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLecturer(@PathVariable Long id) throws Exception
+    public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id) throws Exception
     {
        Lecturer lecturer = lecturerRepository.findById(id).orElseThrow(()-> new RuntimeException("Lecturer not found with id: \" + id"));
        lecturerRepository.delete(lecturer);
