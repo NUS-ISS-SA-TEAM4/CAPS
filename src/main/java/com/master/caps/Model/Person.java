@@ -22,4 +22,12 @@ public class Person {
     private String username;
 
     private String password;
+
+    private String surname;
+
+    private String email;
+
+    private String address;
+
+    private String contactnumber;
 }
