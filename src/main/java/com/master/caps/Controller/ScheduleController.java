@@ -29,7 +29,7 @@ public class ScheduleController {
 
     // 获取单个课程安排
     @GetMapping("/{id}")
-    public ResponseEntity<Schedule> getScheduleById(@PathVariable Long id) {
+    public ResponseEntity<Schedule> getScheduleById(@PathVariable Integer id) {
         Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
         if (optionalSchedule.isPresent()) {
             Schedule schedule = optionalSchedule.get();
@@ -48,7 +48,7 @@ public class ScheduleController {
 
     // 更新课程安排
     @PutMapping("/{id}")
-    public ResponseEntity<Schedule> updateSchedule(@PathVariable Long id, @RequestBody Schedule schedule) {
+    public ResponseEntity<Schedule> updateSchedule(@PathVariable Integer id, @RequestBody Schedule schedule) {
         Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
         if (optionalSchedule.isPresent()) {
             Schedule existingSchedule = optionalSchedule.get();
@@ -64,7 +64,7 @@ public class ScheduleController {
 
     // 删除课程安排
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSchedule(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSchedule(@PathVariable Integer id) {
         Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
         if (optionalSchedule.isPresent()) {
             scheduleRepository.delete(optionalSchedule.get());

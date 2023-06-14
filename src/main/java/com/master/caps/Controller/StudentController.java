@@ -1,8 +1,6 @@
 package com.master.caps.Controller;
-import com.master.caps.Model.Lecturer;
 import com.master.caps.Model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -31,7 +29,7 @@ public class StudentController {
 
     // 获取单个学生
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Student> getStudentById(@PathVariable Integer id) throws Exception {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
         return new ResponseEntity<>(student, HttpStatus.OK);
@@ -46,7 +44,7 @@ public class StudentController {
 
     // 更新学生
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) throws Exception {
+    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student updatedStudent) throws Exception {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
 
@@ -68,7 +66,7 @@ public class StudentController {
 
     // 删除学生
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Void> deleteStudent(@PathVariable Integer id) throws Exception {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
 

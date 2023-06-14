@@ -1,9 +1,7 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Model.CourseStudent;
 import com.master.caps.Model.Faculty;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class FacultyController {
     }
 
     @GetMapping("/{id}")
-    public Faculty getFacultyById(@PathVariable Long id) throws Exception {
+    public Faculty getFacultyById(@PathVariable Integer id) throws Exception {
         return facultyRepository.findById(id)
                 .orElseThrow(() -> new Exception("Faculty not found with id: " + id));
     }
@@ -32,7 +30,7 @@ public class FacultyController {
     }
 
     @PutMapping("/{id}")
-    public Faculty updateFaculty(@PathVariable Long id, @RequestBody Faculty updatedFaculty) throws Exception {
+    public Faculty updateFaculty(@PathVariable Integer id, @RequestBody Faculty updatedFaculty) throws Exception {
         return facultyRepository.findById(id)
                 .map(faculty -> {
                     faculty.setFacultyname(updatedFaculty.getFacultyname());
@@ -42,7 +40,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFaculty(@PathVariable Long id) {
+    public void deleteFaculty(@PathVariable Integer id) {
         facultyRepository.deleteById(id);
     }
 }
