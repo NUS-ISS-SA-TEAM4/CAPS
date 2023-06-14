@@ -1,5 +1,6 @@
 package com.master.caps.Controller;
 
+import com.master.caps.Model.CourseStudent;
 import com.master.caps.Model.Lecturer;
 import com.master.caps.Model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ import java.util.List;
 @RestController
 public class LecturerController {
     @Autowired
-    private final LecturerxRepository lecturerRepository;
+    private final IRepository<Lecturer>  lecturerRepository;
 
-    public LecturerController(LecturerxRepository lecturerRepository)
+    public LecturerController(IRepository<Lecturer> lecturerRepository)
     {
         this.lecturerRepository = lecturerRepository;
     }
@@ -62,5 +63,4 @@ public class LecturerController {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-    //delete the student whose id is xxx
-interface LecturerxRepository extends JpaRepository<Lecturer,Long>{}
+

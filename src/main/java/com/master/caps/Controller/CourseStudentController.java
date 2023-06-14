@@ -1,5 +1,6 @@
 package com.master.caps.Controller;
 
+import com.master.caps.Model.CourseSchedule;
 import com.master.caps.Model.CourseStudent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,10 +15,10 @@ import java.util.Optional;
 @RequestMapping("/course-students")
 public class CourseStudentController {
 
-    private final CourseStudentRepository courseStudentRepository;
+    private final IRepository<CourseStudent> courseStudentRepository;
 
     @Autowired
-    public CourseStudentController(CourseStudentRepository courseStudentRepository) {
+    public CourseStudentController(IRepository<CourseStudent>  courseStudentRepository) {
         this.courseStudentRepository = courseStudentRepository;
     }
 
@@ -74,7 +75,4 @@ public class CourseStudentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
-
-interface CourseStudentRepository extends JpaRepository<CourseStudent, Long> {
 }
