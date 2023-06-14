@@ -55,7 +55,6 @@ public class CourseLecturerController {
             CourseLecturer existingCourseLecturer = optionalCourseLecturer.get();
             existingCourseLecturer.setCourse(courseLecturer.getCourse());
             existingCourseLecturer.setLecturer(courseLecturer.getLecturer());
-            existingCourseLecturer.setStatus(courseLecturer.getStatus());
             CourseLecturer updatedCourseLecturer = courseLecturerRepository.save(existingCourseLecturer);
             return new ResponseEntity<>(updatedCourseLecturer, HttpStatus.OK);
         } else {

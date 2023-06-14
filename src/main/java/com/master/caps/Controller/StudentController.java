@@ -49,15 +49,17 @@ public class StudentController {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
 
-        student.setStudentMatriculationNumber(updatedStudent.getStudentMatriculationNumber());
-        student.setStudentLastName(updatedStudent.getStudentLastName());
-        student.setStudentFirstMidName(updatedStudent.getStudentFirstMidName());
-        student.setStudentEnrollmentDate(updatedStudent.getStudentEnrollmentDate());
-        student.setStudentGender(updatedStudent.getStudentGender());
-        student.setStudentDateOfBirth(updatedStudent.getStudentDateOfBirth());
-        student.setStudentFaculty(updatedStudent.getStudentFaculty());
-        student.setStudentGradePointAverage(updatedStudent.getStudentGradePointAverage());
-        student.setStudentPassword(updatedStudent.getStudentPassword());
+
+        student.setFirstname(updatedStudent.getFirstname());
+        student.setLastname(updatedStudent.getLastname());
+        student.setGender(updatedStudent.getGender());
+        student.setBirthday(updatedStudent.getBirthday());
+        student.setGpa(updatedStudent.getGpa());
+        student.setEnrollmentdate(updatedStudent.getEnrollmentdate());
+        student.setUsername(updatedStudent.getUsername());
+        student.setPassword(updatedStudent.getPassword());
+        student.setStudentfaculty(updatedStudent.getStudentfaculty());
+
 
         Student updatedStudentEntity = studentRepository.save(student);
         return new ResponseEntity<>(updatedStudentEntity, HttpStatus.OK);

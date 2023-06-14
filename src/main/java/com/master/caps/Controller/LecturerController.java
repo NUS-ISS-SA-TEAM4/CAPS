@@ -14,9 +14,9 @@ import java.util.List;
 @RestController
 public class LecturerController {
     @Autowired
-    private final LecturerRepository lecturerRepository;
+    private final LecturerxRepository lecturerRepository;
 
-    public LecturerController(LecturerRepository lecturerRepository)
+    public LecturerController(LecturerxRepository lecturerRepository)
     {
         this.lecturerRepository = lecturerRepository;
     }
@@ -42,13 +42,13 @@ public class LecturerController {
         Lecturer lecturer = lecturerRepository.findById(id)
                 .orElseThrow(() -> new Exception("Student not found with id: " + id));
 
-        lecturer.setLecturerusername(updatedLecturer.getLecturerusername());
-        lecturer.setLecturerbirthday(updatedLecturer.getLecturerbirthday());
-        lecturer.setLecturergender(updatedLecturer.getLecturergender());
+        lecturer.setUsername(updatedLecturer.getUsername());
+        lecturer.setBirthday(updatedLecturer.getBirthday());
+        lecturer.setGender(updatedLecturer.getGender());
         lecturer.setFaculty(updatedLecturer.getFaculty());
-        lecturer.setLecturerfirstname(updatedLecturer.getLecturerfirstname());
-        lecturer.setLecturerlastname(updatedLecturer.getLecturerlastname());
-        lecturer.setLecturerpassword(updatedLecturer.getLecturerpassword());
+        lecturer.setFirstname(updatedLecturer.getFirstname());
+        lecturer.setLastname(updatedLecturer.getLastname());
+        lecturer.setPassword(updatedLecturer.getPassword());
 
         Lecturer updatedLecturerEntity = lecturerRepository.save(lecturer);
         return new ResponseEntity<>(updatedLecturerEntity, HttpStatus.OK);
@@ -63,4 +63,4 @@ public class LecturerController {
     }
 }
     //delete the student whose id is xxx
-interface LecturerRepository extends JpaRepository<Lecturer,Long>{}
+interface LecturerxRepository extends JpaRepository<Lecturer,Long>{}

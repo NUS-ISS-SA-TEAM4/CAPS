@@ -18,6 +18,4 @@ public class CourseLecturer {
     @ManyToOne
     @JoinColumn(name ="lecturer_id")
     private Lecturer lecturer;
-
-    private Integer status;
 }
