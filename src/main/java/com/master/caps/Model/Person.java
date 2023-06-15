@@ -23,6 +23,14 @@ public class Person {
 
     private String password;
 
+    private String surname;
+
+    private String email;
+
+    private String address;
+
+    private String contactnumber;
+
     public String getFullName()
     {
         return firstname+" "+lastname;

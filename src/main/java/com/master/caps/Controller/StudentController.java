@@ -58,8 +58,10 @@ public class StudentController {
         student.setUsername(updatedStudent.getUsername());
         student.setPassword(updatedStudent.getPassword());
         student.setStudentfaculty(updatedStudent.getStudentfaculty());
-
-
+        student.setSurname(updatedStudent.getSurname());
+        student.setContactnumber(updatedStudent.getContactnumber());
+        student.setAddress(updatedStudent.getAddress());
+        student.setEmail(updatedStudent.getEmail());
         Student updatedStudentEntity = studentRepository.save(student);
         return new ResponseEntity<>(updatedStudentEntity, HttpStatus.OK);
     }

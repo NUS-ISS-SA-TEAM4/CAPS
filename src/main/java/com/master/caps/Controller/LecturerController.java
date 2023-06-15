@@ -47,7 +47,10 @@ public class LecturerController {
         lecturer.setFirstname(updatedLecturer.getFirstname());
         lecturer.setLastname(updatedLecturer.getLastname());
         lecturer.setPassword(updatedLecturer.getPassword());
-
+        lecturer.setSurname(updatedLecturer.getSurname());
+        lecturer.setAddress(updatedLecturer.getAddress());
+        lecturer.setContactnumber(updatedLecturer.getContactnumber());
+        lecturer.setEmail(updatedLecturer.getEmail());
         Lecturer updatedLecturerEntity = lecturerRepository.save(lecturer);
         return new ResponseEntity<>(updatedLecturerEntity, HttpStatus.OK);
     }

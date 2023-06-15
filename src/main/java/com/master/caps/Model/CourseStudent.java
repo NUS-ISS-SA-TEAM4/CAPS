@@ -18,6 +18,6 @@ public class CourseStudent {
     @JoinColumn(name ="student_id")
     private Student student;
 
-    private String Grade;
+    private Double grade;
     private Integer status;
 }
