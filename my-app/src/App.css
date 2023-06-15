@@ -1,0 +1,563 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(1, 58, 99);
+}
+
+#nav {
+  display: flex;
+  background-color: rgb(1, 58, 99);
+}
+
+#allLogos {
+  display: flex;
+  padding-top: 10px;
+  background-color: rgb(1, 58, 99);
+}
+
+#logo {
+  display: inline-block;
+  background-color: rgb(1, 58, 99);
+  color: white;
+  margin-top: 15px;
+  padding-left: 50px;
+  height: 60px;
+}
+
+#pagename {
+  display: inline;
+  color: white;
+  padding-top: 10px;
+  font-size: 50px;
+  padding-left: 65px;
+  margin-right: auto;
+}
+
+nav > div > div > ul {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(1, 58, 99);
+  /* display: inline-block; */
+}
+
+nav > div > div > ul > li {
+  /* display: inline-block; */
+  cursor: pointer;
+}
+
+.container {
+  margin-right: 0 !important;
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
+.navbar-nav > li > a {
+  /* display: block; */
+  background-color: rgb(44, 125, 160);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  padding: 30px 60px !important;
+}
+
+#navbarSupportedContent {
+  background-color: rgb(44, 125, 160) !important;
+  padding: 0 !important;
+}
+
+.searchbtn {
+  margin-right: 20px;
+}
+
+.navbar-nav li a:hover {
+  display: block;
+  background-color: rgb(56, 54, 154);
+  /* padding:0 5px !important */
+}
+
+/* css of the tail bar of the Navbar */
+#infowords {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
+  background-color: rgb(1, 58, 99);
+  color: white;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url(https://previews.123rf.com/images/fokaspokas/fokaspokas1809/fokaspokas180900164/108564673-hamburger-menu-web-icon-white-icon-with-shadow-on-transparent-background.jpg) !important;
+}
+
+/* end of nav bar collapse */
+
+.accordion-item {
+  border: none !important;
+}
+
+.accordion-body {
+  background-color: rgb(1, 58, 99);
+}
+
+.accordion-button {
+  color: wheat !important;
+}
+
+.accordion-body > p {
+  color: white !important;
+}
+
+.accordion-body > h5 {
+  color: white !important;
+}
+
+.accordion-body > ul > li {
+  color: white !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgb(1, 58, 99) !important;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-button.collapsed {
+  background-color: rgb(1, 58, 99) !important;
+  color: white !important;
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-button::after {
+  background-image: url(https://thumbnail.imgbin.com/21/9/7/imgbin-chevron-corporation-computer-icons-paper-down-arrow-zsjsUFtqHLkphdGeCb1rYSBxa_t.jpg) !important;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.wrapper {
+  height: 100%;
+  font-family: "Quicksand", sans-serif;
+  line-height: 1.5;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.editButtonAllCases {
+  margin-right: 10px;
+
+  width: 80px;
+}
+
+.deletebtn {
+  width: 80px;
+}
+
+.deleteReport {
+  margin: 0 !important;
+}
+
+.reviewsAllCasesBtn {
+  margin-right: 20px;
+}
+
+/* css of delete and edit buttons div of all cases content */
+.buttonsAllCases {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.innerwrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.innerbox {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  width: 1000px;
+  text-align: center;
+}
+
+.fixed-bg {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 600px;
+  width: 100%;
+  color: white;
+}
+
+.about {
+  background-color: rgb(44, 125, 160);
+}
+
+.title6 {
+  background-color: rgb(1, 58, 99);
+}
+
+.containerAbout {
+  background-color: rgb(1, 58, 99);
+}
+
+.title {
+  margin-top: 50px;
+  position: absolute;
+  background-color: lightskyblue;
+  opacity: 0.96;
+  border-radius: 20px;
+  border: 10px;
+  padding: 20px;
+  width: 80vw;
+}
+
+.title3 {
+  margin-top: 50px;
+  background-color: lightskyblue;
+  opacity: 0.96;
+  border-radius: 20px;
+  border: 10px;
+  padding: 20px 10px;
+  width: 85vw;
+}
+
+.errorMessageImg {
+  width: 80vw;
+}
+
+.wrapper2 {
+  position: relative;
+}
+
+.innerwrapper {
+  background-image: url("https://filmdaily.co/wp-content/uploads/2021/06/rad-01.jpg");
+}
+
+.d-block {
+  width: 100% !important;
+  height: 600px !important;
+  background-size: cover !important;
+}
+
+.scroll-bg {
+  background-color: #0f0f0a;
+  padding: 10px 70px;
+  color: #676767;
+}
+
+/* first section of wrapper*/
+
+.bg-1 {
+  background-image: url("https://wallpaperaccess.com/full/3901230.jpg");
+  justify-content: center;
+}
+
+/* 2nd section of wrapper*/
+
+.bg-2 {
+  background-image: url("https://www.shutterstock.com/image-photo/schoolgirl-books-on-dark-background-260nw-1339290800.jpg");
+  background-size: cover;
+}
+
+/* 3rd section of wrapper*/
+
+.bg-3 {
+  background-image: url("https://thumbs.dreamstime.com/z/composite-image-students-holding-folders-college-against-black-background-63471333.jpg");
+}
+
+.form-label {
+  color: rgb(56, 54, 154);
+}
+
+.card {
+  color: black;
+}
+
+#flexContainer {
+  display: flex;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+#caseImgUrl {
+  flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+  padding-top: 20px;
+  height: auto !important;
+  max-width: 40vw !important;
+  background-size: "cover";
+}
+
+#contents {
+  padding-left: 30px;
+}
+
+
+/* padding between form contents in add case*/
+.card-body {
+  padding-bottom: 20px;
+}
+
+/* padding between the navtab in all cases and the contents */
+.card-group-all-cases {
+  padding: 0;
+}
+
+/* flex the all cases cards */
+.card-all-cases {
+  display: flex;
+}
+
+/* image dimensions of All cases section*/
+.card-img-top {
+  align-items: center;
+  max-height: 80vh;
+  max-width: 100vh;
+  padding-right: 20px;
+}
+
+.displayReviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* dimensions of card title in All cases section*/
+.card-body-all-images {
+  width: 60%;
+}
+
+/* css of width of card footer */
+.card-footer {
+  width: 300px !important;
+}
+
+/* css of icons in All cases section */
+.iconsAllCases {
+  display: inline-block;
+  padding: 2px;
+  color: red;
+  border: 1px solid red;
+  font-size: 10px;
+  cursor: pointer;
+  line-height: 2;
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+  text-decoration: none;
+}
+
+.iconsAllCases:hover {
+  background: rgba(255, 0, 0, 0.63);
+  border: 1px solid rgba(250, 0, 0, 0.753);
+  color: white;
+}
+
+/* Navtab css when editing featured case  */
+.box {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  width: 1000px;
+  text-align: center;
+}
+
+.infoTab {
+  padding-bottom: 30px;
+}
+
+
+
+/* featured case inner content css */
+.card {
+  background-color: rgb(202, 233, 255) !important;
+}
+
+.title5 {
+  background-color: #0f0f0a;
+}
+
+/* mobile responsive */
+/* 0 to 768px */
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  #caseImgUrl {
+    flex-shrink: 100;
+    -webkit-flex-shrink: 0;
+    padding-top: 20px;
+    height: auto !important;
+    max-width: 100vw !important;
+    background-size: "cover";
+  }
+
+  .card-img-top {
+    max-width: 100vw !important;
+    height: auto !important;
+  }
+
+  .card-all-cases {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .card-group-all-cases {
+    text-align: center;
+  }
+
+  .navbar-nav > li > a {
+    background-color: rgb(44, 125, 160);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    padding: 30px 10px !important;
+  }
+
+  #infowords {
+    padding: 10px 10px !important;
+  }
+
+  .buttonsAllCases {
+    flex-direction: row !important;
+    gap: 0 5px !important;
+  }
+
+  .title {
+    margin-top: 50px;
+    position: absolute;
+    background-color: lightskyblue;
+    opacity: 0.96;
+    border-radius: 20px;
+    border: 10px;
+    padding: 10px;
+    width: 100vw;
+  }
+
+  .title3 {
+    width: 100vw !important;
+  }
+
+  .title5 {
+    width: 100vw !important;
+  }
+
+  .table {
+    font-size: 8px;
+  }
+
+  #pagename {
+    font-size: 20px;
+    padding-left: 5px;
+  }
+
+  #logo {
+    margin: 0;
+    padding: 10px 10px;
+  }
+
+  #flexContainer {
+    flex-direction: column;
+  }
+
+  .d-block {
+    width: 100% !important;
+    height: auto !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  nav-link {
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .rating {
+    display: inline !important;
+    font-size: 1em !important;
+    margin-right: 5px !important;
+    padding: 0 !important;
+  }
+
+  h5 {
+    font-size: 15px !important;
+  }
+
+  .images > img {
+    display: none;
+  }
+
+  .searchbtn {
+    margin-right: 5px !important;
+    padding-right: 15px;
+  }
+}
+/* end of mobile css */
+
+/* css for background colour of reports section */
+.title4 {
+  background-color: rgb(202, 233, 255);
+  padding-top: 20px;
+}
+
+/* css for background colour of reports section */
+.container-lg {
+  background-color: rgb(202, 233, 255);
+}
+
+/* css for heart icons ratings from font awesome */
+.fa {
+  color: black;
+  padding: 4em;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 2.5em;
+  color: rgb(177, 167, 166);
+  padding: 0 5px;
+}
+
+#ratingReport {
+  float: right;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  transition: all 0.2s;
+  margin: 0;
+  float: right;
+}
+
+/* heart icons ratings css */
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: rgba(250, 0, 0, 0.753);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: rgba(255, 77, 109);
+}
+
+/* flex the heart icons in ratings in featured contents and for the search
+/* results */
+.reviewFlex {
+  display: flex;
+  justify-content: space-between;
+}
