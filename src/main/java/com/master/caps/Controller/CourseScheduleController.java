@@ -2,7 +2,6 @@ package com.master.caps.Controller;
 
 import com.master.caps.Model.CourseSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +13,10 @@ import java.util.Optional;
 @RequestMapping("/course-schedules")
 public class CourseScheduleController {
 
-    private final CourseScheduleRepository courseScheduleRepository;
+    private final IRepository<CourseSchedule> courseScheduleRepository;
 
     @Autowired
-    public CourseScheduleController(CourseScheduleRepository courseScheduleRepository) {
+    public CourseScheduleController(IRepository<CourseSchedule>courseScheduleRepository) {
         this.courseScheduleRepository = courseScheduleRepository;
     }
 
@@ -30,7 +29,7 @@ public class CourseScheduleController {
 
     // 获取单个课程安排
     @GetMapping("/{id}")
-    public ResponseEntity<CourseSchedule> getCourseScheduleById(@PathVariable Long id) {
+    public ResponseEntity<CourseSchedule> getCourseScheduleById(@PathVariable Integer id) {
         Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
         if (optionalCourseSchedule.isPresent()) {
             CourseSchedule courseSchedule = optionalCourseSchedule.get();
@@ -49,7 +48,7 @@ public class CourseScheduleController {
 
     // 更新课程安排
     @PutMapping("/{id}")
-    public ResponseEntity<CourseSchedule> updateCourseSchedule(@PathVariable Long id, @RequestBody CourseSchedule courseSchedule) {
+    public ResponseEntity<CourseSchedule> updateCourseSchedule(@PathVariable Integer id, @RequestBody CourseSchedule courseSchedule) {
         Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
         if (optionalCourseSchedule.isPresent()) {
             CourseSchedule existingCourseSchedule = optionalCourseSchedule.get();
@@ -65,7 +64,7 @@ public class CourseScheduleController {
 
     // 删除课程安排
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourseSchedule(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCourseSchedule(@PathVariable Integer id) {
         Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
         if (optionalCourseSchedule.isPresent()) {
             courseScheduleRepository.deleteById(id);
@@ -74,8 +73,4 @@ public class CourseScheduleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-}
-
-
-interface CourseScheduleRepository extends JpaRepository<CourseSchedule, Long> {
 }

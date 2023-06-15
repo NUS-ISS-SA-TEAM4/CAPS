@@ -2,7 +2,6 @@ package com.master.caps.Controller;
 
 import com.master.caps.Model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +13,10 @@ import java.util.Optional;
 @RequestMapping("/courses")
 public class CourseController {
 
-    private final CourseRepository courseRepository;
+    private final IRepository<Course> courseRepository;
 
     @Autowired
-    public CourseController(CourseRepository courseRepository) {
+    public CourseController(IRepository<Course> courseRepository) {
         this.courseRepository = courseRepository;
     }
 
@@ -30,7 +29,7 @@ public class CourseController {
 
     // 获取单个课程
     @GetMapping("/Course/{id}")
-    public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
+    public ResponseEntity<Course> getCourseById(@PathVariable Integer id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
@@ -49,7 +48,7 @@ public class CourseController {
 
     // 更新课程
     @PutMapping("/update/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
+    public ResponseEntity<Course> updateCourse(@PathVariable Integer id, @RequestBody Course course) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             Course existingCourse = optionalCourse.get();
@@ -68,7 +67,7 @@ public class CourseController {
 
     // 删除课程
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCourse(@PathVariable Integer id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         if (optionalCourse.isPresent()) {
             courseRepository.delete(optionalCourse.get());
@@ -79,6 +78,4 @@ public class CourseController {
     }
 }
 
-interface CourseRepository extends JpaRepository<Course, Long> {
-}
 

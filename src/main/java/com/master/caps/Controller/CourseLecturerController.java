@@ -2,7 +2,6 @@ package com.master.caps.Controller;
 
 import com.master.caps.Model.CourseLecturer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +13,10 @@ import java.util.Optional;
 @RequestMapping("/course-lecturers")
 public class CourseLecturerController {
 
-    private final CourseLecturerRepository courseLecturerRepository;
+    private final IRepository<CourseLecturer> courseLecturerRepository;
 
     @Autowired
-    public CourseLecturerController(CourseLecturerRepository courseLecturerRepository) {
+    public CourseLecturerController(IRepository<CourseLecturer> courseLecturerRepository) {
         this.courseLecturerRepository = courseLecturerRepository;
     }
 
@@ -30,7 +29,7 @@ public class CourseLecturerController {
 
     // 获取单个课程讲师关联
     @GetMapping("/{id}")
-    public ResponseEntity<CourseLecturer> getCourseLecturerById(@PathVariable Long id) {
+    public ResponseEntity<CourseLecturer> getCourseLecturerById(@PathVariable Integer id) {
         Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
         if (optionalCourseLecturer.isPresent()) {
             CourseLecturer courseLecturer = optionalCourseLecturer.get();
@@ -49,7 +48,7 @@ public class CourseLecturerController {
 
     // 更新课程讲师关联
     @PutMapping("/{id}")
-    public ResponseEntity<CourseLecturer> updateCourseLecturer(@PathVariable Long id, @RequestBody CourseLecturer courseLecturer) {
+    public ResponseEntity<CourseLecturer> updateCourseLecturer(@PathVariable Integer id, @RequestBody CourseLecturer courseLecturer) {
         Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
         if (optionalCourseLecturer.isPresent()) {
             CourseLecturer existingCourseLecturer = optionalCourseLecturer.get();
@@ -64,7 +63,7 @@ public class CourseLecturerController {
 
     // 删除课程讲师关联
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourseLecturer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCourseLecturer(@PathVariable Integer id) {
         Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
         if (optionalCourseLecturer.isPresent()) {
             courseLecturerRepository.delete(optionalCourseLecturer.get());
@@ -76,5 +75,3 @@ public class CourseLecturerController {
 }
 
 
-interface CourseLecturerRepository extends JpaRepository<CourseLecturer, Long> {
-}
