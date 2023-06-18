@@ -1,4 +1,4 @@
-package com.master.caps.Controller;
+package com.master.caps.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
