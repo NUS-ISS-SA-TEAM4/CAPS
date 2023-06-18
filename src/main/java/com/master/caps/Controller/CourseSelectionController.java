@@ -86,6 +86,6 @@ public class CourseSelectionController {
         //Getting the email of the student
         Student StudentEmail = studentService.findbyId(Id);
 
-
+        //https://www.baeldung.com/spring-email
     }
 }
