@@ -1,6 +1,7 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Lecturer;
+import com.master.caps.Service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,33 +13,36 @@ import java.util.List;
 @RestController
 public class LecturerController {
 
-    private final IRepository<Lecturer>  lecturerRepository;
+    //private final IRepository<Lecturer>  lecturerRepository;
     @Autowired
-    public LecturerController(IRepository<Lecturer> lecturerRepository)
-    {
-        this.lecturerRepository = lecturerRepository;
-    }
+    private LecturerService lecturerService;
+
+
+    //public LecturerController(IRepository<Lecturer> lecturerRepository)
+    //{
+    //    this.lecturerRepository = lecturerRepository;
+    //}
 
     @GetMapping("/lecturers")
     public Model getAllLecturers(Model model)
     {
-        List<Lecturer> lecturers = lecturerRepository.findAll();
+        List<Lecturer> lecturers = lecturerService.findAllLecturers();
         model.addAttribute("lecturers",lecturers);
         return model;
     }
     // get the list of all lecturers
 
     @GetMapping("/{id}")
-    public ResponseEntity<Lecturer> getLecturerById(@PathVariable Integer id)throws Exception
+    // throws Throwable is to throw the Exception message where lecturer ID cannot be found
+    public ResponseEntity<Lecturer> getLecturerById(@PathVariable Integer id) throws Throwable
     {
-        Lecturer lecturer = lecturerRepository.findById(id).orElseThrow(()->new Exception("Lecturer not found with id:"+id));
+        Lecturer lecturer = lecturerService.findLecturer(id);
         return new ResponseEntity<>(lecturer, HttpStatus.OK);
     }
     //get the lecturer whose id is xxx
     @PutMapping("/{id}")
-    public ResponseEntity<Lecturer> updateLecturer(@PathVariable Integer id, @RequestBody Lecturer updatedLecturer) throws Exception {
-        Lecturer lecturer = lecturerRepository.findById(id)
-                .orElseThrow(() -> new Exception("Student not found with id: " + id));
+    public ResponseEntity<Lecturer> updateLecturer(@PathVariable Integer id, @RequestBody Lecturer updatedLecturer) throws Throwable {
+        Lecturer lecturer = lecturerService.findLecturer(id);
 
         lecturer.setUsername(updatedLecturer.getUsername());
         lecturer.setBirthday(updatedLecturer.getBirthday());
@@ -51,15 +55,14 @@ public class LecturerController {
         lecturer.setAddress(updatedLecturer.getAddress());
         lecturer.setContactnumber(updatedLecturer.getContactnumber());
         lecturer.setEmail(updatedLecturer.getEmail());
-        Lecturer updatedLecturerEntity = lecturerRepository.save(lecturer);
+        Lecturer updatedLecturerEntity = lecturerService.save(lecturer);
         return new ResponseEntity<>(updatedLecturerEntity, HttpStatus.OK);
     }
     //update the information of lecturer whose id is xxx
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id)
-    {
-       Lecturer lecturer = lecturerRepository.findById(id).orElseThrow(()-> new RuntimeException("Lecturer not found with id: \" + id"));
-       lecturerRepository.delete(lecturer);
+    public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id) throws Throwable {
+       Lecturer lecturer = lecturerService.findLecturer(id);
+       lecturerService.delete(lecturer);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
