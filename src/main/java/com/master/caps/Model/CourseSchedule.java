@@ -9,7 +9,7 @@ import lombok.Data;
 public class CourseSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
@@ -20,4 +20,5 @@ public class CourseSchedule {
     private Schedule schedule;
 
     private String roomNumber;
+
 }
