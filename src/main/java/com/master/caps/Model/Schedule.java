@@ -1,6 +1,6 @@
 package com.master.caps.Model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,8 +14,8 @@ public class Schedule{
     private Long id;
 
     private Integer scheduledayofweek;
-    @Temporal(TemporalType.DATE)
-    private Date schedulestarttime;
-    @Temporal(TemporalType.DATE)
+    // @Temporal(TemporalType.DATE)
+    private Date  schedulestarttime;
+    // @Temporal(TemporalType.DATE)
     private Date scheduleendtime;
 }

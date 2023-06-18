@@ -1,14 +1,14 @@
-package com.master.caps.Controller;
+// package com.master.caps.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class ErrorController {
-    @GetMapping("/Error")
-    public String ErrorPage()
-    {
-        return "Error";
-    }
+// @RestController
+// public class ErrorController {
+//     @GetMapping("/Error")
+//     public String ErrorPage()
+//     {
+//         return "Error";
+//     }
 
-}
+// }

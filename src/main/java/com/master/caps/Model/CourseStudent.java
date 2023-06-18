@@ -1,6 +1,6 @@
 package com.master.caps.Model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.yaml.snakeyaml.events.Event;
 

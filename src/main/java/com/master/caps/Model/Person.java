@@ -1,6 +1,8 @@
 package com.master.caps.Model;
 
-import jakarta.persistence.*;
+import java.sql.Date;
+
+import javax.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -15,8 +17,8 @@ public class Person {
     private String lastname;
 
     private String gender;
-    @Temporal(TemporalType.DATE)
-    private Integer birthday;
+    //   @Temporal(TemporalType.DATE)
+    private int birthday;
 
     @Column(unique = true)
     private String username;

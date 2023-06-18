@@ -1,6 +1,8 @@
 package com.master.caps.Model;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+
+import javax.persistence.*;
 import lombok.Data;
 
 @Entity
