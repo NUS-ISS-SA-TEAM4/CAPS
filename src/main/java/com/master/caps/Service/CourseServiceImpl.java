@@ -4,13 +4,15 @@ import com.master.caps.Model.Course;
 import com.master.caps.Model.Lecturer;
 import com.master.caps.Repository.CourseRepository;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
-    @Resource
+
+    @Autowired
     private CourseRepository courseRepository;
     @Override
     public List<Course> findAllCourse() {
