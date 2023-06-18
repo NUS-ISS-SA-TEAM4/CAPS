@@ -1,6 +1,8 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.CourseSchedule;
+import com.master.caps.Repository.IRepository;
+import com.master.caps.Service.CourseScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,64 +15,40 @@ import java.util.Optional;
 @RequestMapping("/course-schedules")
 public class CourseScheduleController {
 
-    private final IRepository<CourseSchedule> courseScheduleRepository;
+    private final CourseScheduleService courseScheduleService;
 
     @Autowired
-    public CourseScheduleController(IRepository<CourseSchedule>courseScheduleRepository) {
-        this.courseScheduleRepository = courseScheduleRepository;
+    public CourseScheduleController(CourseScheduleService courseScheduleService) {
+        this.courseScheduleService = courseScheduleService;
     }
 
-    // 获取所有课程安排
     @GetMapping
     public ResponseEntity<List<CourseSchedule>> getAllCourseSchedules() {
-        List<CourseSchedule> courseSchedules = courseScheduleRepository.findAll();
+        List<CourseSchedule> courseSchedules = courseScheduleService.getAllCourseSchedules();
         return new ResponseEntity<>(courseSchedules, HttpStatus.OK);
     }
 
-    // 获取单个课程安排
     @GetMapping("/{id}")
-    public ResponseEntity<CourseSchedule> getCourseScheduleById(@PathVariable Integer id) {
-        Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
-        if (optionalCourseSchedule.isPresent()) {
-            CourseSchedule courseSchedule = optionalCourseSchedule.get();
-            return new ResponseEntity<>(courseSchedule, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseSchedule> getCourseScheduleById(@PathVariable Integer id) throws Exception {
+        CourseSchedule courseSchedule = courseScheduleService.getCourseScheduleById(id);
+        return new ResponseEntity<>(courseSchedule, HttpStatus.OK);
     }
 
-    // 创建课程安排
     @PostMapping
     public ResponseEntity<CourseSchedule> createCourseSchedule(@RequestBody CourseSchedule courseSchedule) {
-        CourseSchedule createdCourseSchedule = courseScheduleRepository.save(courseSchedule);
+        CourseSchedule createdCourseSchedule = courseScheduleService.createCourseSchedule(courseSchedule);
         return new ResponseEntity<>(createdCourseSchedule, HttpStatus.CREATED);
     }
 
-    // 更新课程安排
     @PutMapping("/{id}")
-    public ResponseEntity<CourseSchedule> updateCourseSchedule(@PathVariable Integer id, @RequestBody CourseSchedule courseSchedule) {
-        Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
-        if (optionalCourseSchedule.isPresent()) {
-            CourseSchedule existingCourseSchedule = optionalCourseSchedule.get();
-            existingCourseSchedule.setCourse(courseSchedule.getCourse());
-            existingCourseSchedule.setSchedule(courseSchedule.getSchedule());
-            existingCourseSchedule.setRoomNumber(courseSchedule.getRoomNumber());
-            CourseSchedule updatedCourseSchedule = courseScheduleRepository.save(existingCourseSchedule);
-            return new ResponseEntity<>(updatedCourseSchedule, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseSchedule> updateCourseSchedule(@PathVariable Integer id, @RequestBody CourseSchedule updatedCourseSchedule) throws Exception {
+        CourseSchedule updatedCourseScheduleEntity = courseScheduleService.updateCourseSchedule(id, updatedCourseSchedule);
+        return new ResponseEntity<>(updatedCourseScheduleEntity, HttpStatus.OK);
     }
 
-    // 删除课程安排
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourseSchedule(@PathVariable Integer id) {
-        Optional<CourseSchedule> optionalCourseSchedule = courseScheduleRepository.findById(id);
-        if (optionalCourseSchedule.isPresent()) {
-            courseScheduleRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        courseScheduleService.deleteCourseSchedule(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
