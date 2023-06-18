@@ -55,14 +55,14 @@ public class LecturerController {
         lecturer.setAddress(updatedLecturer.getAddress());
         lecturer.setContactnumber(updatedLecturer.getContactnumber());
         lecturer.setEmail(updatedLecturer.getEmail());
-        Lecturer updatedLecturerEntity = lecturerService.save(lecturer);
+        Lecturer updatedLecturerEntity = lecturerService.changeLecturer(lecturer);
         return new ResponseEntity<>(updatedLecturerEntity, HttpStatus.OK);
     }
     //update the information of lecturer whose id is xxx
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLecturer(@PathVariable Integer id) throws Throwable {
        Lecturer lecturer = lecturerService.findLecturer(id);
-       lecturerService.delete(lecturer);
+       lecturerService.removeLecturer(lecturer);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
