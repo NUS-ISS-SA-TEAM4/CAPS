@@ -1,9 +1,10 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Model.CourseSchedule;
 import com.master.caps.Model.CourseStudent;
+import com.master.caps.Repository.CourseStudentRepository;
+import com.master.caps.Repository.IRepository;
+import com.master.caps.Service.CourseStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,64 +16,40 @@ import java.util.Optional;
 @RequestMapping("/course-students")
 public class CourseStudentController {
 
-    private final IRepository<CourseStudent> courseStudentRepository;
+    private final CourseStudentService courseStudentService;
 
     @Autowired
-    public CourseStudentController(IRepository<CourseStudent>  courseStudentRepository) {
-        this.courseStudentRepository = courseStudentRepository;
+    public CourseStudentController(CourseStudentService courseStudentService) {
+        this.courseStudentService = courseStudentService;
     }
 
-    // 获取所有课程学生关联
     @GetMapping
     public ResponseEntity<List<CourseStudent>> getAllCourseStudents() {
-        List<CourseStudent> courseStudents = courseStudentRepository.findAll();
+        List<CourseStudent> courseStudents = courseStudentService.getAllCourseStudents();
         return new ResponseEntity<>(courseStudents, HttpStatus.OK);
     }
 
-    // 获取单个课程学生关联
     @GetMapping("/{id}")
-    public ResponseEntity<CourseStudent> getCourseStudentById(@PathVariable Long id) {
-        Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
-        if (optionalCourseStudent.isPresent()) {
-            CourseStudent courseStudent = optionalCourseStudent.get();
-            return new ResponseEntity<>(courseStudent, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseStudent> getCourseStudentById(@PathVariable Integer id) throws Exception {
+        CourseStudent courseStudent = courseStudentService.getCourseStudentById(id);
+        return new ResponseEntity<>(courseStudent, HttpStatus.OK);
     }
 
-    // 创建课程学生关联
     @PostMapping
     public ResponseEntity<CourseStudent> createCourseStudent(@RequestBody CourseStudent courseStudent) {
-        CourseStudent createdCourseStudent = courseStudentRepository.save(courseStudent);
+        CourseStudent createdCourseStudent = courseStudentService.createCourseStudent(courseStudent);
         return new ResponseEntity<>(createdCourseStudent, HttpStatus.CREATED);
     }
 
-    // 更新课程学生关联
     @PutMapping("/{id}")
-    public ResponseEntity<CourseStudent> updateCourseStudent(@PathVariable Long id, @RequestBody CourseStudent courseStudent) {
-        Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
-        if (optionalCourseStudent.isPresent()) {
-            CourseStudent existingCourseStudent = optionalCourseStudent.get();
-            existingCourseStudent.setCourse(courseStudent.getCourse());
-            existingCourseStudent.setStudent(courseStudent.getStudent());
-            existingCourseStudent.setGrade(courseStudent.getGrade());
-            CourseStudent updatedCourseStudent = courseStudentRepository.save(existingCourseStudent);
-            return new ResponseEntity<>(updatedCourseStudent, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseStudent> updateCourseStudent(@PathVariable Integer id, @RequestBody CourseStudent updatedCourseStudent) throws Exception {
+        CourseStudent updatedCourseStudentEntity = courseStudentService.updateCourseStudent(id, updatedCourseStudent);
+        return new ResponseEntity<>(updatedCourseStudentEntity, HttpStatus.OK);
     }
 
-    // 删除课程学生关联
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourseStudent(@PathVariable Long id) {
-        Optional<CourseStudent> optionalCourseStudent = courseStudentRepository.findById(id);
-        if (optionalCourseStudent.isPresent()) {
-            courseStudentRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Void> deleteCourseStudent(@PathVariable Integer id) {
+        courseStudentService.deleteCourseStudent(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 public class CourseLecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "course_id")

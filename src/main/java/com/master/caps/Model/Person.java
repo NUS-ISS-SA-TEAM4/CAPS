@@ -8,7 +8,7 @@ import lombok.Data;
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long id;
+    private int id;
 
     private String firstname;
 
@@ -22,4 +22,18 @@ public class Person {
     private String username;
 
     private String password;
+
+    private String surname;
+
+    private String email;
+
+    private String address;
+
+    private String contactnumber;
+
+    public String getFullName()
+    {
+        return firstname+" "+lastname;
+    }
+
 }

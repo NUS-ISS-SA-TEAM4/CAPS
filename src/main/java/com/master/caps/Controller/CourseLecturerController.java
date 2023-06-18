@@ -1,9 +1,9 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Model.Course;
 import com.master.caps.Model.CourseLecturer;
+import com.master.caps.Repository.IRepository;
+import com.master.caps.Service.CourseLecturerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,65 +15,34 @@ import java.util.Optional;
 @RequestMapping("/course-lecturers")
 public class CourseLecturerController {
 
-    private final IRepository<CourseLecturer> courseLecturerRepository;
+    private final CourseLecturerService courseLecturerService;
 
     @Autowired
-    public CourseLecturerController(IRepository<CourseLecturer> courseLecturerRepository) {
-        this.courseLecturerRepository = courseLecturerRepository;
+    public CourseLecturerController(CourseLecturerService courseLecturerService) {
+        this.courseLecturerService = courseLecturerService;
     }
 
-    // 获取所有课程讲师关联
     @GetMapping
     public ResponseEntity<List<CourseLecturer>> getAllCourseLecturers() {
-        List<CourseLecturer> courseLecturers = courseLecturerRepository.findAll();
+        List<CourseLecturer> courseLecturers = courseLecturerService.getAllCourseLecturers();
         return new ResponseEntity<>(courseLecturers, HttpStatus.OK);
     }
 
-    // 获取单个课程讲师关联
     @GetMapping("/{id}")
-    public ResponseEntity<CourseLecturer> getCourseLecturerById(@PathVariable Long id) {
-        Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
-        if (optionalCourseLecturer.isPresent()) {
-            CourseLecturer courseLecturer = optionalCourseLecturer.get();
-            return new ResponseEntity<>(courseLecturer, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseLecturer> getCourseLecturerById(@PathVariable Integer id) throws Exception {
+        CourseLecturer courseLecturer = courseLecturerService.getCourseLecturerById(id);
+        return new ResponseEntity<>(courseLecturer, HttpStatus.OK);
     }
 
-    // 创建课程讲师关联
     @PostMapping
     public ResponseEntity<CourseLecturer> createCourseLecturer(@RequestBody CourseLecturer courseLecturer) {
-        CourseLecturer createdCourseLecturer = courseLecturerRepository.save(courseLecturer);
+        CourseLecturer createdCourseLecturer = courseLecturerService.createCourseLecturer(courseLecturer);
         return new ResponseEntity<>(createdCourseLecturer, HttpStatus.CREATED);
     }
 
-    // 更新课程讲师关联
     @PutMapping("/{id}")
-    public ResponseEntity<CourseLecturer> updateCourseLecturer(@PathVariable Long id, @RequestBody CourseLecturer courseLecturer) {
-        Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
-        if (optionalCourseLecturer.isPresent()) {
-            CourseLecturer existingCourseLecturer = optionalCourseLecturer.get();
-            existingCourseLecturer.setCourse(courseLecturer.getCourse());
-            existingCourseLecturer.setLecturer(courseLecturer.getLecturer());
-            CourseLecturer updatedCourseLecturer = courseLecturerRepository.save(existingCourseLecturer);
-            return new ResponseEntity<>(updatedCourseLecturer, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    // 删除课程讲师关联
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourseLecturer(@PathVariable Long id) {
-        Optional<CourseLecturer> optionalCourseLecturer = courseLecturerRepository.findById(id);
-        if (optionalCourseLecturer.isPresent()) {
-            courseLecturerRepository.delete(optionalCourseLecturer.get());
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<CourseLecturer> updateCourseLecturer(@PathVariable Integer id, @RequestBody CourseLecturer updatedCourseLecturer) throws Exception {
+        CourseLecturer updatedCourseLecturerEntity = courseLecturerService.updateCourseLecturer(id, updatedCourseLecturer);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
-

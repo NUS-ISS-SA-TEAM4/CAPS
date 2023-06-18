@@ -1,6 +1,8 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Schedule;
+import com.master.caps.Repository.IRepository;
+import com.master.caps.Service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,25 +14,22 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/schedules")
 public class ScheduleController {
-
-    private final IRepository<Schedule> scheduleRepository;
+    private final ScheduleService scheduleService;
 
     @Autowired
-    public ScheduleController(IRepository<Schedule> scheduleRepository) {
-        this.scheduleRepository = scheduleRepository;
+    public ScheduleController(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
     }
 
-    // 获取所有课程安排
     @GetMapping
     public ResponseEntity<List<Schedule>> getAllSchedules() {
-        List<Schedule> schedules = scheduleRepository.findAll();
+        List<Schedule> schedules = scheduleService.getAllSchedules();
         return new ResponseEntity<>(schedules, HttpStatus.OK);
     }
 
-    // 获取单个课程安排
     @GetMapping("/{id}")
-    public ResponseEntity<Schedule> getScheduleById(@PathVariable Long id) {
-        Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
+    public ResponseEntity<Schedule> getScheduleById(@PathVariable Integer id) {
+        Optional<Schedule> optionalSchedule = scheduleService.getScheduleById(id);
         if (optionalSchedule.isPresent()) {
             Schedule schedule = optionalSchedule.get();
             return new ResponseEntity<>(schedule, HttpStatus.OK);
@@ -39,35 +38,27 @@ public class ScheduleController {
         }
     }
 
-    // 创建课程安排
     @PostMapping
     public ResponseEntity<Schedule> createSchedule(@RequestBody Schedule schedule) {
-        Schedule createdSchedule = scheduleRepository.save(schedule);
+        Schedule createdSchedule = scheduleService.createSchedule(schedule);
         return new ResponseEntity<>(createdSchedule, HttpStatus.CREATED);
     }
 
-    // 更新课程安排
     @PutMapping("/{id}")
-    public ResponseEntity<Schedule> updateSchedule(@PathVariable Long id, @RequestBody Schedule schedule) {
-        Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
-        if (optionalSchedule.isPresent()) {
-            Schedule existingSchedule = optionalSchedule.get();
-            existingSchedule.setScheduledayofweek(schedule.getScheduledayofweek());
-            existingSchedule.setSchedulestarttime(schedule.getSchedulestarttime());
-            existingSchedule.setScheduleendtime(schedule.getScheduleendtime());
-            Schedule updatedSchedule = scheduleRepository.save(existingSchedule);
+    public ResponseEntity<Schedule> updateSchedule(@PathVariable Integer id, @RequestBody Schedule schedule) {
+        Optional<Schedule> optionalUpdatedSchedule = scheduleService.updateSchedule(id, schedule);
+        if (optionalUpdatedSchedule.isPresent()) {
+            Schedule updatedSchedule = optionalUpdatedSchedule.get();
             return new ResponseEntity<>(updatedSchedule, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    // 删除课程安排
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSchedule(@PathVariable Long id) {
-        Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
-        if (optionalSchedule.isPresent()) {
-            scheduleRepository.delete(optionalSchedule.get());
+    public ResponseEntity<Void> deleteSchedule(@PathVariable Integer id) {
+        boolean isDeleted = scheduleService.deleteSchedule(id);
+        if (isDeleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
