@@ -1,21 +1,18 @@
 package com.master.caps.Service;
 
 import com.master.caps.Model.Student;
-import com.master.caps.Repository.FacultyRepository;
-import com.master.caps.Repository.IRepository;
 import com.master.caps.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @Service
 public class StudentService {
-    private final IRepository<Student> studentRepository;
+    private final StudentRepository studentRepository;
 
     @Autowired
-    public StudentService(IRepository<Student> studentRepository) {
+    public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 

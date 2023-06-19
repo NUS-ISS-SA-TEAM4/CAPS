@@ -1,7 +1,7 @@
 package com.master.caps.Model;
 
+import com.master.caps.Service.PasswordService;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -53,5 +53,14 @@ public class Person {
     {
         return firstname+" "+lastname;
     }
+
+    public String getPassword() throws Exception {
+        return PasswordService.decrypt(password);
+    }
+
+    public void setPassword(String password) throws Exception {
+        this.password = PasswordService.encrypt(password);
+    }
+
 
 }

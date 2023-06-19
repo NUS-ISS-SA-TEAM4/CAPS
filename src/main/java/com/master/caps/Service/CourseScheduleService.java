@@ -36,7 +36,7 @@ public class CourseScheduleService {
 
         courseSchedule.setCourse(updatedCourseSchedule.getCourse());
         courseSchedule.setSchedule(updatedCourseSchedule.getSchedule());
-        courseSchedule.setRoomNumber(updatedCourseSchedule.getRoomNumber());
+        courseSchedule.setClassroom(updatedCourseSchedule.getClassroom());
 
         return courseScheduleRepository.save(courseSchedule);
     }

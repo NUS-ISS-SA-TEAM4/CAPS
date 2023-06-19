@@ -14,8 +14,24 @@ public class Schedule{
     private int id;
 
     private Integer scheduledayofweek;
-    @Temporal(TemporalType.DATE)
-    private Date schedulestarttime;
-    @Temporal(TemporalType.DATE)
-    private Date scheduleendtime;
+    private Integer schedulestarttime;
+    private Integer scheduleendtime;
+
+    public Schedule(int id, Integer scheduledayofweek, Integer schedulestarttime, Integer scheduleendtime) {
+        this.id = id;
+        this.scheduledayofweek = scheduledayofweek;
+        this.schedulestarttime = schedulestarttime;
+        this.scheduleendtime = scheduleendtime;
+    }
+
+    public Schedule() {
+        id=0;
+
+    }
+
+    public boolean isAvailable()
+    {
+        return id==0;
+    }
+
 }

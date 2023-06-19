@@ -1,11 +1,9 @@
 package com.master.caps.Controller;
 import com.master.caps.Model.Student;
-import com.master.caps.Repository.IRepository;
 import com.master.caps.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +18,9 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping("/AllStudents")
     public ResponseEntity<List<Student>> getAllStudents() {
+        System.out.println("114514");
         List<Student> students = studentService.getAllStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
