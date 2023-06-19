@@ -5,9 +5,13 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Faculty {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String facultyname;
+
+    @Column(name="classroomname")
+    private String classRoomName;
+    @Column(name="classroomsize")
+    private Integer classRoomSize;
 }

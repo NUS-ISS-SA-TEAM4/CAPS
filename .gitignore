@@ -33,4 +33,4 @@ build/
 
 
 ### resources setting ###
-### /src/main/resources/application.properties
+/src/main/resources/application.properties

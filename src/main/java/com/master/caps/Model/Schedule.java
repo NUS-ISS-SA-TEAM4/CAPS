@@ -1,10 +1,9 @@
 package com.master.caps.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -12,17 +11,27 @@ public class Schedule{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    private String courseid;
+    private Integer scheduledayofweek;
+    private Integer schedulestarttime;
+    private Integer scheduleendtime;
 
-    private String coursename;
+    public Schedule(int id, Integer scheduledayofweek, Integer schedulestarttime, Integer scheduleendtime) {
+        this.id = id;
+        this.scheduledayofweek = scheduledayofweek;
+        this.schedulestarttime = schedulestarttime;
+        this.scheduleendtime = scheduleendtime;
+    }
 
-    private String coursecredits;
+    public Schedule() {
+        id=0;
 
-    private Integer coursecapacity;
+    }
 
-    private String coursevacancy;
+    public boolean isAvailable()
+    {
+        return id==0;
+    }
 
-    private Double courseenrollmentstatus;
 }

@@ -1,25 +1,20 @@
 package com.master.caps.Model;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Id;
 import lombok.Data;
+
+import java.util.Date;
 
 
 @Entity
 @Data
-public class Student{
+public class Student extends Person{
+    @Temporal(TemporalType.DATE)
+    private Date enrollmentdate;
 
-    @Id
-    private Long id;
-    private String name;
-    private String matricNo;
-    private String gender;
-    private Integer yob;
-    private String grade;
-    private Double gpa;
-    private String registeringStatus;
-    private Long programId;
-    private Long courseId;
+    @ManyToOne
+    @JoinColumn(name = "studentfacultyid")
+    private Faculty studentfaculty;
 
-
+    private Float gpa;
 }
