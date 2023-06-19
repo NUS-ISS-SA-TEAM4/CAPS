@@ -1,8 +1,9 @@
 package com.master.caps.Controller;
 
+import com.master.caps.Model.Course;
 import com.master.caps.Model.CourseStudent;
 import com.master.caps.Repository.CourseStudentRepository;
-import com.master.caps.Repository.IRepository;
+
 import com.master.caps.Service.CourseStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,4 +53,5 @@ public class CourseStudentController {
         courseStudentService.deleteCourseStudent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }

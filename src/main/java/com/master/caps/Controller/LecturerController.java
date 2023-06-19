@@ -1,7 +1,7 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Lecturer;
-import com.master.caps.Repository.IRepository;
+
 import com.master.caps.Repository.LecturerRepository;
 import com.master.caps.Service.LecturerService;
 import org.springframework.beans.factory.annotation.Autowired;

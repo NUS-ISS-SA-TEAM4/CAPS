@@ -1,6 +1,8 @@
 package com.master.caps.Service;
 
+import com.master.caps.Model.Course;
 import com.master.caps.Model.CourseStudent;
+import com.master.caps.Model.Student;
 import com.master.caps.Repository.CourseStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,4 +46,12 @@ public class CourseStudentService {
     public void deleteCourseStudent(Integer id) {
         courseStudentRepository.deleteById(id);
     }
+
+
+    public List<CourseStudent> findByStudent(Student student)
+    {
+        return courseStudentRepository.findByStudent(student);
+
+    }
+   
 }

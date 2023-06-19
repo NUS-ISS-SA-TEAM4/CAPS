@@ -1,7 +1,7 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Faculty;
-import com.master.caps.Repository.IRepository;
+
 import com.master.caps.Service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

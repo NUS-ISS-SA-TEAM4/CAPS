@@ -1,7 +1,7 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Course;
-import com.master.caps.Repository.IRepository;
+
 import com.master.caps.Service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,6 +50,12 @@ public class CourseController {
     public ResponseEntity<Void> deleteCourse(@PathVariable Integer id) {
         courseService.deleteCourse(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+     @GetMapping("available/{studentId}")
+    public ResponseEntity<List<Course>> getAvailableCoursesByStudentId(@PathVariable Integer studentId) throws Exception {
+        List<Course> list = courseService.getAvailableCoursesByStudentId(studentId);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }
 

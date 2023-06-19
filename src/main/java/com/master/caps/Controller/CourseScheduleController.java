@@ -1,7 +1,7 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.CourseSchedule;
-import com.master.caps.Repository.IRepository;
+
 import com.master.caps.Service.CourseScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
