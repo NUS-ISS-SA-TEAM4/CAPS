@@ -1,6 +1,6 @@
 package com.master.caps.Model;
 
-import com.master.caps.Service.Password;
+import com.master.caps.Service.PasswordService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -55,11 +55,11 @@ public class Person {
     }
 
     public String getPassword() throws Exception {
-        return Password.decrypt(password);
+        return PasswordService.decrypt(password);
     }
 
     public void setPassword(String password) throws Exception {
-        this.password = Password.encrypt(password);
+        this.password = PasswordService.encrypt(password);
     }
 
 

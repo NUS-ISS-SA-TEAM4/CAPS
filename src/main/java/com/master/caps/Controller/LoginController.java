@@ -1,6 +1,6 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Service.Password;
+import com.master.caps.Service.PasswordService;
 import com.master.caps.Model.LoginParam;
 import com.master.caps.service.PersonService;
 import jakarta.servlet.http.HttpSession;
@@ -43,7 +43,7 @@ public class LoginController {
                         BindingResult bindingResult) throws Exception {
 
         // encrypt password user entered in, then using encrypted password to retrieve person obj
-        String SecretPassword = Password.encrypt(loginParam.getPassword());
+        String SecretPassword = PasswordService.encrypt(loginParam.getPassword());
         Integer roleType = loginParam.getRoleType();
         String username = loginParam.getUsername();
         String returnPage = "login";

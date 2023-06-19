@@ -9,7 +9,6 @@ public class ScheduleArrangement {
     private final CourseLecturerService courseLecturerService;
     private final ClassroomService classroomService;
     private final CourseScheduleService courseScheduleService;
-
     private final ScheduleService scheduleService;
     public ScheduleArrangement(CourseLecturerService courseLecturerService, ClassroomService classroomService,CourseScheduleService courseScheduleService,ScheduleService scheduleService) {
         this.courseLecturerService = courseLecturerService;
