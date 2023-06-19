@@ -1,4 +1,4 @@
-package com.master.caps.service;
+package com.master.caps.Service;
 
 import com.master.caps.Model.Person;
 import com.master.caps.repository.PersonRepository;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements com.master.caps.service.PersonService {
 
     @Autowired
     private PersonRepository personRepo;

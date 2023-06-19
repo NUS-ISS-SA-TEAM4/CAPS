@@ -19,6 +19,17 @@ public class CourseSchedule {
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
 
-    private String roomNumber;
+    @ManyToOne
+    @JoinColumn(name = "classroomid")
+    private Classroom classroom;
 
+    public CourseSchedule(Course course, Schedule schedule, Classroom classroom) {
+        this.course = course;
+        this.schedule = schedule;
+        this.classroom = classroom;
+    }
+
+    public CourseSchedule() {
+
+    }
 }

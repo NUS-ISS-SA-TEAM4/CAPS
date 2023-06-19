@@ -1,12 +1,14 @@
-package com.master.caps.Algorithm;
+package com.master.caps.Service;
+
+import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-
-public class Password {
+@Service
+public class PasswordService {
 
     public static SecretKey secretKey;
 

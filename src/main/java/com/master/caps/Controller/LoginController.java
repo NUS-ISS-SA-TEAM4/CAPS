@@ -1,6 +1,6 @@
 package com.master.caps.Controller;
 
-import com.master.caps.Algorithm.Password;
+import com.master.caps.Service.Password;
 import com.master.caps.Model.LoginParam;
 import com.master.caps.service.PersonService;
 import jakarta.servlet.http.HttpSession;

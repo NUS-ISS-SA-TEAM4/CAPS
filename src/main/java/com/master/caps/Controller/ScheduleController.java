@@ -1,7 +1,6 @@
 package com.master.caps.Controller;
 
 import com.master.caps.Model.Schedule;
-import com.master.caps.Repository.IRepository;
 import com.master.caps.Service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
